@@ -15,3 +15,8 @@
  | AudioSocket                                        | http://github.com/atsip76/audiosocket     |
 
 ## Подготовка инфраструктуры с использованием trerraform
+### ******
+
+## Конфигурация Asterisk
+Требуемая конфигурация для Asterisk была значительно сокращена, но необходимо настроить: ARI, dialplan и PJSIP. Примеры включены в каталог asteriskconfig . Вам потребуется обновить файл inbound.conf.tmpl, указав свои DID (номера телефонов).
+
