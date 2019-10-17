@@ -14,7 +14,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-// State is the structure for storing application execution data
+// State это структура для хранения данных о выполнении приложения
 type State struct {
 	h *ari.ChannelHandle
 
@@ -26,7 +26,7 @@ type stateFn func(context.Context) (stateFn, error)
 func app(ctx context.Context, h *ari.ChannelHandle) error {
 	log.Println("running channel app")
 
-	// Always quit on hangup
+	// Всегда выходить при зависании
 	go func() {
 		sub := h.Subscribe(ari.Events.ChannelDestroyed)
 		defer sub.Cancel()
@@ -39,12 +39,12 @@ func app(ctx context.Context, h *ari.ChannelHandle) error {
 	h.Answer()
 	time.Sleep(time.Second)
 
-	// Create the state struct
+	// Создаем структуру
 	s := &State{
 		h: h,
 	}
 
-	// Run state machine
+	// Запуск 
 	var err error
 	for next := s.menu; next != nil; {
 		if next, err = next(ctx); err != nil {

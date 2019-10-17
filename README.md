@@ -8,7 +8,7 @@
  | Сервис                                             | Адрес                              |
  | -------------------------------------------------- |  ---------------------------------- |
  | Go библиотека интерфейса ARI Asterisk              | http://github.com/atsip76/ari             |
- | Прокси для интерфейса REST Asterisk (ARI)          | http://github.com/CyCoreSystems/ari-proxy |
+ | Прокси для интерфейса REST Asterisk (ARI)          | http://github.com/atsip76/ari-proxy|
  | Netdiscover инструмент поиска в cloud networking   | http://github.com/atsip76/netdiscover     |
  | Asterisk конфиги kubernetes-based Asterisk шаблоны | http://github.com/atsip76/asterisk-config |
  | Kamailio диспетчер kubernetes-based                | http://github.com/atsip76/dispatchers     |

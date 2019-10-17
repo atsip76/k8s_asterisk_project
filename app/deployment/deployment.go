@@ -5,7 +5,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-// Scale changes the number of app instances
+// Скайлинг приложения
 func Scale(namespace string, app string, n *int32) error {
 	c, err := k8s.NewInClusterClient()
 	if err != nil {

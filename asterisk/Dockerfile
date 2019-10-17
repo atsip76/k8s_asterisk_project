@@ -1,7 +1,5 @@
 # Asterisk for Kubernetes
 #
-# It is expected that the configuration should be generated separately, as from https://github.com/CyCoreSystems/asterisk-config.
-#
 
 FROM debian:stretch as builder
 MAINTAINER Pragmatic  "3a@opsprolab.ru"

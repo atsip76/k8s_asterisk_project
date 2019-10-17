@@ -1,7 +1,5 @@
 #!/bin/bash
-# Set default settings, pull repository, build
-# app, etc., _if_ we are not given a different
-# command.  If so, execute that command instead.
+#Установка настроек по умолчанию, подготовка к запуску
 set -e
 
 # Default values
