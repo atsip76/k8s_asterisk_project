@@ -7,11 +7,11 @@
 ## Основные компоненты проекта
  | Сервис                                             | Адрес                              |
  | -------------------------------------------------- |  ---------------------------------- |
- | Go библиотека интерфейса ARI Asterisk              | github.com/atsip76/ari             |
- | Прокси для интерфейса REST Asterisk (ARI)          | github.com/CyCoreSystems/ari-proxy |
- | Netdiscover инструмент поиска в cloud networking   | github.com/atsip76/netdiscover     |
- | Asterisk конфиги kubernetes-based Asterisk шаблоны | github.com/atsip76/asterisk-config |
- | Kamailio диспетчер kubernetes-based                | github.com/atsip76/dispatchers     |
- | AudioSocket                                        | github.com/atsip76/audiosocket     |
+ | Go библиотека интерфейса ARI Asterisk              | http://github.com/atsip76/ari             |
+ | Прокси для интерфейса REST Asterisk (ARI)          | http://github.com/CyCoreSystems/ari-proxy |
+ | Netdiscover инструмент поиска в cloud networking   | http://github.com/atsip76/netdiscover     |
+ | Asterisk конфиги kubernetes-based Asterisk шаблоны | http://github.com/atsip76/asterisk-config |
+ | Kamailio диспетчер kubernetes-based                | http://github.com/atsip76/dispatchers     |
+ | AudioSocket                                        | http://github.com/atsip76/audiosocket     |
 
 ## Подготовка инфраструктуры с использованием trerraform
