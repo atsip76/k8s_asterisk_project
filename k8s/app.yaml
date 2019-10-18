@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: cycoresystems/scaling-ari-app
+          image: atsip/scaling-ari-app
           env:
             - name: NATS_URI
               value: nats://nats:4222

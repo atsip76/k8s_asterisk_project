@@ -9,11 +9,10 @@ spec:
   selector:
     component: audiosocket
   ports:
-  - name: audiosocket
-    port: 8080
+    - name: audiosocket
+      port: 8080
 
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -33,7 +32,7 @@ spec:
     spec:
       containers:
         - name: audiosocket
-          image: cycoresystems/astricon-voice-service
+          image: atsip/astricon-voice-service
           ports:
             - name: audiosocket
               containerPort: 8080

@@ -28,7 +28,7 @@ RUN curl -L -o /tmp/audiosocket.tar.gz https://github.com/CyCoreSystems/audiosoc
 RUN cd /tmp/asterisk-${ASTERISK_VER} &&\
    ./configure --with-pjproject-bundled --with-jansson-bundled --with-spandsp --with-opus && \
    make menuselect.makeopts && \
-   menuselect/menuselect --disable CORE-SOUNDS-EN-GSM --enable CORE-SOUNDS-EN-ULAW --enable codec_opus --disable BUILD_NATIVE --disable chan_sip menuselect.makeopts && \
+   menuselect/menuselect --disable CORE-SOUNDS-EN-GSM --enable CORE-SOUNDS-RU-ULAW --enable codec_opus --disable BUILD_NATIVE --disable chan_sip menuselect.makeopts && \
    make && \
    make install && \
    rm -Rf /tmp/*

@@ -1,0 +1,22 @@
+modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      valid_status_codes: []
+      method: GET
+
+  tcp_connect:
+    prober: tcp
+    timeout: 5s
+
+  ssh_banner:
+    prober: tcp
+    timeout: 5s
+    tcp:
+      query_response:
+      - expect: "^SSH-2.0-"
+
+  icmp:
+    prober: icmp
+    timeout: 5s

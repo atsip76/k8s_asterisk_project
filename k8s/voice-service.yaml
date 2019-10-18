@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: cycoresystems/asterisk-demo-voice-ari
+          image: atsip/asterisk-demo-voice-ari
           env:
             - name: NATS_URI
               value: nats://nats:4222

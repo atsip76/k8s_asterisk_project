@@ -14,7 +14,6 @@ spec:
       port: 5060
 
 ---
-
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -37,12 +36,12 @@ spec:
             secretName: asterisk-config
       containers:
         - name: asterisk
-          image: cycoresystems/asterisk:16.4.0
+          image: atsip/asterisk
           volumeMounts:
             - name: config
               mountPath: /etc/asterisk
         - name: config
-          image: cycoresystems/asterisk-config:v0.7.1
+          image: atsip/asterisk-config
           volumeMounts:
             - name: config
               mountPath: /etc/asterisk
@@ -58,7 +57,7 @@ spec:
             - name: ARI_PASSWORD
               value: admin
         - name: natsgw
-          image: cycoresystems/ari-proxy:v3.0.0-pre3
+          image: atsip/ari-proxy
           env:
             - name: NATS_URI
               value: nats://nats:4222
