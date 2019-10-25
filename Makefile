@@ -11,7 +11,7 @@ login: ## Login to docker hub
 
 build-app: app asterisk kamailio rtpproxy voice
 
-build-monit: prometheus alertmanager cloudprober-exporter
+build-monit: prometheus alertmanager
 
 build-log: fluentd
 
@@ -22,7 +22,7 @@ app: ## Создание docker-образа для контейнера app
 	docker build -f $(APP_SRC)/app/Dockerfile -t $(REGISTRY)/app $(APP_SRC)/app
 
 asterisk: ## Создание  docker-образа для контейнера asterisk
-	docker build -f $(APP_SRC)/asterisk-py/Dockerfile -t $(REGISTRY)/asterisk $(APP_SRC)/asterisk
+	docker build -f $(APP_SRC)/asterisk/Dockerfile -t $(REGISTRY)/asterisk $(APP_SRC)/asterisk
 
 kamailio: ## Создание docker-образа для контейнера kamailio
 	docker build -f $(APP_SRC)/kamailio/Dockerfile -t $(REGISTRY)/kamailio $(APP_SRC)/kamailio

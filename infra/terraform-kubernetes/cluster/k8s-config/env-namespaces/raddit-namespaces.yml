@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: raddit-stage
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: raddit-prod
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra

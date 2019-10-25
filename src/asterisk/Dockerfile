@@ -2,7 +2,7 @@
 #
 
 FROM debian:stretch as builder
-MAINTAINER Pragmatic  "3a@opsprolab.ru"
+MAINTAINER Pragmatic  "anatolya@opsprolab.ru"
 
 ENV ASTERISK_VER 16.4.1
 
