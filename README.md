@@ -10,8 +10,7 @@
  | Go библиотека интерфейса ARI Asterisk              | http://github.com/atsip76/ari             |
  | Прокси для интерфейса REST Asterisk (ARI)          | http://github.com/atsip76/ari-proxy       |
  | Netdiscover инструмент поиска в cloud networking   | http://github.com/atsip76/netdiscover     |
- | Конфиги Asterisk  шаблоны kubernetes-based         | http://github.com/atsip76/asterisk-config 
- |
+ | Конфиги Asterisk  шаблоны kubernetes-based         | http://github.com/atsip76/asterisk-config |
  | Kamailio диспетчер kubernetes-based                | http://github.com/atsip76/dispatchers     |
  | AudioSocket                                        | http://github.com/atsip76/audiosocket     |
 
@@ -77,3 +76,4 @@ zip -r asterisk-config.zip *
 ```sh
 kubectl create secret generic asterisk-config --from-file=asterisk-config.zip
 ```
+Рзворачивание /deploy-k8s.sh
