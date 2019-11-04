@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kamailio
+  namespace: voip
+  labels:
+    component: kamailio
+spec:
+  selector:
+    matchLabels:
+      component: kamailio
+  template:
+    metadata:
+      name: kamailio
+      labels:
+        component: kamailio
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: kamailio
+      hostNetwork: true
+      volumes:
+        - name: config
+      containers:
+        - name: kamailio
+          image: cycoresystems/kamailio
+          env:
+            - name: CLOUD
+              value: gcp
+          volumeMounts:
+            - name: config
+              mountPath: /data/kamailio
+        - name: rtpproxy
+          image: cycoresystems/rtpproxy
+          env:
+            - name: CLOUD
+              value: gcp
+        - name: dispatchers
+          image: cycoresystems/dispatchers
+          command:
+            - /app
+            - "-set"
+            - voip:asterisk=1:5080
+          volumeMounts:
+            - name: config
+              mountPath: /data/kamailio

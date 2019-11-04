@@ -1,0 +1,7 @@
+name: kamailio
+version: 1.0.0
+description: kamailio
+maintainers:
+        - name OpsProLab.ru
+        email: 3a@opsprolab.ru
+appVersion: 1.0

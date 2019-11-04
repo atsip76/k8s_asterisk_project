@@ -1,10 +1,12 @@
 # Asterisk for Kubernetes
 #
+# It is expected that the configuration should be generated separately, as from https://github.com/atsip/asterisk-config.
+#
 
 FROM debian:stretch as builder
-MAINTAINER Pragmatic  "anatolya@opsprolab.ru"
+MAINTAINER Anatoly Afanasyev "atsip76@gmail.com"
 
-ENV ASTERISK_VER 16.4.1
+ENV ASTERISK_VER 17.0.0
 
 # Install Asterisk
 RUN apt-get update && \
@@ -17,13 +19,13 @@ RUN curl -o /tmp/asterisk.tar.gz http://downloads.asterisk.org/pub/telephony/ast
    tar xf /tmp/asterisk.tar.gz && \
    cd /tmp/asterisk-${ASTERISK_VER}
 
-RUN curl -L -o /tmp/audiosocket.tar.gz https://github.com/CyCoreSystems/audiosocket/archive/channel.tar.gz &&\
+RUN curl -L -o /tmp/audiosocket.tar.gz https://github.com/CyCoreSystems/audiosocket/archive/master.tar.gz &&\
    cd /tmp/asterisk-${ASTERISK_VER} &&\
    tar xf /tmp/audiosocket.tar.gz &&\
-   cp audiosocket-channel/asterisk/apps/* apps/ &&\
-   cp audiosocket-channel/asterisk/channels/* channels/ &&\
-   cp -R audiosocket-channel/asterisk/include/* include/ &&\
-   cp audiosocket-channel/asterisk/res/* res/
+   cp audiosocket-master/asterisk/apps/* apps/ &&\
+   cp audiosocket-master/asterisk/channels/* channels/ &&\
+   cp -R audiosocket-master/asterisk/include/* include/ &&\
+   cp audiosocket-master/asterisk/res/* res/
 
 RUN cd /tmp/asterisk-${ASTERISK_VER} &&\
    ./configure --with-pjproject-bundled --with-jansson-bundled --with-spandsp --with-opus && \

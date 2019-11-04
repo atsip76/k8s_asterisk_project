@@ -7,9 +7,9 @@ help:
   @grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
 
 login: ## Login to docker hub
-	docker login -u $(REGISTRY) --password-stdin $(DOCKER_PASSWORD)
+	docker login -u $(REGISTRY) --password-stdin $(DOCKER_PASSWORD) || docker login --username $(REGISTRY)
 
-build-app: app asterisk kamailio rtpproxy voice
+build-app: asterisk kamailio rtpproxy voice
 
 build-monit: prometheus alertmanager
 
@@ -50,7 +50,7 @@ push-images: ## Пуш созданных docker-образов в docker-regist
 #	docker push $(REGISTRY)/cloudprober
 	docker push $(REGISTRY)/voice
 
-deploy: build-app build-log push-images ###Сборка и пуш всех образов
+deploy: build-app push-images ###Сборка и пуш всех образов
 
 ####################################################################################################
 # Управление контейнерами с помощью docker-compose (dc)

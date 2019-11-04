@@ -19,5 +19,5 @@ exten = audiosocket,1,Verbose(1, "Audiosocket Leg")
  same = n,Dial(AudioSocket/{{.Env "AUDIOSOCKET_SERVICE_HOST"}}:8080/${AUDIOSOCKET_ID})
  same = n,Hangup()
 
-exten = 18882400309,1,Goto(demo,1)
-exten = 16786084209,1,Goto(voicedemo,1)
+exten = 1888,1,Goto(demo,1)
+exten = 1666,1,Goto(voicedemo,1)

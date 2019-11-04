@@ -1,0 +1,7 @@
+name: rbac
+version: 1.0.0
+description: voip-manager
+maintainers:
+  - name: OpsProLab
+    email: atsip@gmail.com
+appVersion: 1.0

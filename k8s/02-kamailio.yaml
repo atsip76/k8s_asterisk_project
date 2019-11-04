@@ -15,6 +15,7 @@ spec:
     component: kamailio
 
 ---
+
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -39,7 +40,7 @@ spec:
         - name: config
       containers:
         - name: kamailio
-          image: atsip/kamailio
+          image: cycoresystems/kamailio
           env:
             - name: CLOUD
               value: gcp
@@ -47,12 +48,12 @@ spec:
             - name: config
               mountPath: /data/kamailio
         - name: rtpproxy
-          image: atsip/rtpproxy
+          image: cycoresystems/rtpproxy
           env:
             - name: CLOUD
               value: gcp
         - name: dispatchers
-          image: atsip/dispatchers
+          image: cycoresystems/dispatchers
           command:
             - /app
             - "-set"

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kamailio
+  namespace: voip
+  labels:
+    component: kamailio
+spec:
+  ports:
+    - name: sip
+      protocol: UDP
+      port: 5060
+      targetPort: 5060
+  selector:
+    component: kamailio

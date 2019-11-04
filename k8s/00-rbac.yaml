@@ -4,7 +4,7 @@ metadata:
   name: voip-manager
   namespace: voip
 rules:
-  - apiGroups: [""] # "" основная группа API
+  - apiGroups: [""] # "" indicates the core API group
     resources: ["pods","endpoints","services"]
     verbs: ["get", "watch", "list"]
   - apiGroups: ["apps"]
