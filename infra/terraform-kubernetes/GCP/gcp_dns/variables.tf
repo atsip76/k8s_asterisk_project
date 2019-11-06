@@ -15,3 +15,13 @@ variable "region" {
   type        = string
   default = "europe-west1"
 }
+
+variable "zone-name" {
+  type        = string
+  default = "test-zone"
+}
+
+variable "dns-name" {
+  type        = string
+  default = "domain.test."
+}

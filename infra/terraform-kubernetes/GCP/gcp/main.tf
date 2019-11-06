@@ -52,7 +52,7 @@ resource "google_container_node_pool" "node_pool" {
   name     = var.pool_name
   project  = var.project
   location = var.location
-  cluster  = "${google_container_cluster.cluster.name}"
+  cluster  = var.cluster_name
 
   initial_node_count = "1"
 

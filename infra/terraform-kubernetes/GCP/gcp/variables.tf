@@ -69,12 +69,12 @@ variable zone {
   default = "europe-west1-b"
 }
 
-variable public_key_path {
+/* variable public_key_path {
   description = "Путь к public key для ssh"
 }
 variable private_key_path {
   description = "Путь к private key для ssh"
-}
+} */
 
 variable "kubectl_config_path" {
   description = "Path to the kubectl config file. Defaults to $HOME/.kube/config"

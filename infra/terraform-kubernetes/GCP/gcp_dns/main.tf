@@ -22,7 +22,7 @@ resource "google_dns_record_set" "a_gitlab" {
   type = "A"
   ttl  = 300
 
-  rrdatas = ["8.8.8.8"]
+  rrdatas = ["${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"]
 }
 
 
@@ -32,7 +32,7 @@ resource "google_dns_record_set" "a_prometheus" {
   type = "A"
   ttl  = 300
 
-  rrdatas = ["8.8.8.8"]
+  rrdatas = ["${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"]
 }
 
 resource "google_dns_record_set" "a_grafana" {
@@ -41,6 +41,10 @@ resource "google_dns_record_set" "a_grafana" {
   type = "A"
   ttl  = 300
 
-  rrdatas = ["8.8.8.8"]
+  rrdatas = ["${data.kubernetes_service.nginx.load_balancer_ingress.0.ip}"]
 }
 
+resource "google_dns_managed_zone" "prod" {
+  name     = var.zone-name
+  dns_name = var.dns-name
+}

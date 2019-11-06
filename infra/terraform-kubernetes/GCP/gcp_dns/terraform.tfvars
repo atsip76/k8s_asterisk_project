@@ -1,3 +1,5 @@
 project = "test-otus"
 location = "europe-west1"
 region = "europe-west1"
+zone-name = "opsprolab-zone"
+dns-name = "opsprolab.ru"
