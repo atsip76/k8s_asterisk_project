@@ -3,6 +3,8 @@ deprecated: true
 description: GitLab Omnibus all-in-one bundle
 home: https://about.gitlab.com
 icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+metadata:
+  namespace: service
 keywords:
 - git
 - ci

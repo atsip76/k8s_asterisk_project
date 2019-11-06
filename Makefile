@@ -7,9 +7,9 @@ help:
   @grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
 
 login: ## Login to docker hub
-	docker login -u $(REGISTRY) --password-stdin $(DOCKER_PASSWORD) || docker login --username $(REGISTRY)
-
-build-app: asterisk kamailio rtpproxy voice
+	cat ~/.config/DockerHUB/.my_password.txt | docker login --username $(REGISTRY) --password-stdin
+	
+build-app: asterisk kamailio rtpproxy
 
 build-monit: prometheus alertmanager
 
@@ -18,8 +18,10 @@ build-log: fluentd
 fluentd:
 	docker build -f logging/fluentd/Dockerfile -t $(REGISTRY)/fluentd logging/fluentd
 
-app: ## Создание docker-образа для контейнера app
-	docker build -f $(APP_SRC)/app/Dockerfile -t $(REGISTRY)/app $(APP_SRC)/app
+apps: ## Создание docker-образа для контейнеров apps
+	docker build -f $(APP_SRC)/apps/dtmfScaler/Dockerfile -t $(REGISTRY)/dtmfScaler $(APP_SRC)/apps/dtmfScaler
+	docker build -f $(APP_SRC)/apps/voiceScaler/Dockerfile -t $(REGISTRY)/voiceScaler $(APP_SRC)/apps/voiceScaler
+	docker build -f $(APP_SRC)/apps/voiceTransscriber/service/Dockerfile -t $(REGISTRY)/voiceTransscriber $(APP_SRC)/apps/voiceTransscriber
 
 asterisk: ## Создание  docker-образа для контейнера asterisk
 	docker build -f $(APP_SRC)/asterisk/Dockerfile -t $(REGISTRY)/asterisk $(APP_SRC)/asterisk
@@ -35,20 +37,17 @@ alertmanager: ## Создание docker-образа для контейнер�
 	docker build -f $(MONI)/alertmanager/Dockerfile -t $(REGISTRY)/alertmanager $(MONI)/alertmanager
 
 rtpproxy: ## Создание docker-образа для контейнера rtpproxy
-	docker build -f $(APP_SRC)/rtpproxy/Dockerfile -t $(REGISTRY)/rtpproxy $(MONI)/rtpproxy
-
-voice: ## Создание docker-образа для контейнера voice
-	docker build -f $(APP_SRC)/voice/Dockerfile -t $(REGISTRY)/voice $(MONI)/voice
+	docker build -f $(APP_SRC)/rtpproxy/Dockerfile -t $(REGISTRY)/rtpproxy $(APP_SRC)/rtpproxy
 
 push-images: ## Пуш созданных docker-образов в docker-registry
-	docker push $(REGISTRY)/app
+#	docker push $(REGISTRY)/app
 	docker push $(REGISTRY)/asterisk
 	docker push $(REGISTRY)/kamailio
 #	docker push $(REGISTRY)/prometheus
 #	docker push $(REGISTRY)/alertmanager
 	docker push $(REGISTRY)/rtpproxy
 #	docker push $(REGISTRY)/cloudprober
-	docker push $(REGISTRY)/voice
+	
 
 deploy: build-app push-images ###Сборка и пуш всех образов
 

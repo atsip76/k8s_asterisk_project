@@ -8,11 +8,11 @@
 # Recommended to set up an A record on the DNS to *.your-domain.com to point to
 # the baseIP
 # e.g. *.your-domain.com.	A	300	baseIP
-#baseDomain: your-domain.com
+baseDomain: opsprolab.ru
 
 # legoEmail is a valid email address used by Let's Encrypt. It does not have to
 # be at the baseDomain.
-#legoEmail: you@example.com
+legoEmail: atsip76@gmail.com
 
 # Optional variables
 # baseIP is an externally provisioned static IP address to use instead of the provisioned one.

@@ -1,0 +1,6 @@
+name: k8s_pbx
+version: 0.1.0
+description: asterisk&kamailio -> k8s
+maintainers:
+  - name: Anatoly Afanasyev
+    email: atsip76@gmail.com

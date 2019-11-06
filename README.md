@@ -2,7 +2,7 @@
 ## Asterisk on Kubernetes
 ## Описание проекта
 #### Этот репозиторий содержит код для развертывания масштабируемого голосового приложения и инфраструктуры в Kubernetes с использованием Kamailio, Asterisk и NATS.
-##### Настроен мониторинг с помощью Prometheus, метрики визаулизированы с помощью grafana. Автоматизирован процесс поднятия инфраструктуры с помощью terraform, ansible.
+  ###### Настроен мониторинг с помощью Prometheus, метрики визаулизированы с помощью grafana. Автоматизирован процесс поднятия инфраструктуры с помощью terraform.
 
 ## Основные компоненты проекта
  | Сервис                                             | Адрес                                     |
@@ -22,7 +22,7 @@
 В этом варианте используется форк модуля Terraform от https://www.gruntwork.io/ для запуска кластера Kubernetes на Google Cloud Platform (GCP) с Helm и Tiller.
 Используем утилиту kubergrunt для безопасного управления парами ключей сертификатов TLS, которые используются Tiller.
 Ваша система должна быть настроена так, чтобы она могла находить `terraform`,` gcloud`, `kubectl`,`kubergrunt`, и `helm` утилиты в переменной `PATH`. 
-Руководства по установке для каждого инструмента:
+Руководства по установке необходимых утилит:
 
 1. [`gcloud`] (https://cloud.google.com/sdk/gcloud/)
 2. [`kubectl`] (https://kubernetes.io/docs/tasks/tools/install-kubectl/)
@@ -30,36 +30,61 @@
 4. [`helm`] (https://docs.helm.sh/using_helm/#install-helm)
 5. [`kubergrunt`] (https://github.com/gruntwork-io/kubergrunt/releases) (минимальная версия: v0.3.8)
 
-Убедитесь, что двоичные файлы находятся в вашей переменной `PATH`
-kubergrunt используется для сокрытия секретов передаваемых в стейт файле terraform.
+* kubergrunt используется для сокрытия секретов передаваемых в стейт файле terraform.
 
-Подготовка:
-Создайте новый проект используя консоль GCP
-Активируйте Compute Engine API - APIs & Services - Add credentials to your project
-Внесите необходимые изменения в переменные файла terraform.tfvars
+###### Подготовка:
+* Создайте новый проект используя консоль GCP
+* Активируйте Compute Engine API - APIs & Services - Add credentials to your project
+* Внесите необходимые изменения в переменные файла terraform.tfvars
 
-Поднимаем инфраструктуру проекта:
+###### Поднимаем инфраструктуру проекта:
 
 ```sh
-cd infra/terraform-kubernetes/gcp/kubergrunt
+cd infra/terraform-kubernetes/gcp-kubergrunt/
 terraform init
 terraform apply
 ```
 
 ##### Вариант без kubergrunt:
-Создаем ключ сервисного аккаунта gcp json format (APIs & Services-> Credentials-> Create credentials{Create service account key}) и сохраняем локально ~/.config/GCP/key-id-project.json
+* Создаем ключ сервисного аккаунта gcp json format (APIs & Services-> Credentials-> Create credentials{Create service account key}) и сохраняем локально ~/.config/GCP/key-id-project.json
 
-Поднимаем инфраструктуру проекта:
+Руководства по установке необходимых утилит:
+1. [`gcloud`] (https://cloud.google.com/sdk/gcloud/)
+2. [`kubectl`] (https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+3. [`terraform`] (https://learn.hashicorp.com/terraform/getting-started/install.html)
+4. [`helm`] (https://docs.helm.sh/using_helm/#install-helm)
+
+###### Поднимаем инфраструктуру проекта:
 ```sh
 cd infra/terraform-kubernetes/gcp/
+#редактируем terraform.tfvars
+terraform init
+terraform apply
+```
+###### Ставим tiller если вариант без kubergrunt:
+```sh
+cd infra/terraform-kubernetes/tiller
+kubectl apply -f tiller.yml
+helm init --service-account tiller
+```
+###### Устанавливаем GitLab
+```sh
+cd k8s/charts/
+helm repo add gitlab https://charts.gitlab.io
+helm fetch gitlab/gitlab-omnibus --version 0.1.37 --untar
+helm install --name gitlab . -f values.yaml
+```
+
+###### Создаем A записи сервисов в DNS
+* Регестрируем имя своего домена Cloud [`DNS`](https://console.cloud.google.com/net-services/dns/zones?project=test-otus&folder&organizationId)
+```sh
+cd infra/terraform-kubernetes/gcp_dns
+#редактируем terraform.tfvars используем свои данные
 terraform init
 terraform apply
 ```
 
-Устанавливаем GitLab
-helm repo add gitlab https://charts.gitlab.io
-helm fetch gitlab/gitlab-omnibus --version 0.1.37 --untar
-cd gitlab-omnibus
+
 
 
 
@@ -76,4 +101,7 @@ zip -r asterisk-config.zip *
 ```sh
 kubectl create secret generic asterisk-config --from-file=asterisk-config.zip
 ```
-Рзворачивание /deploy-k8s.sh
+##### Рзворачивание сервисов приложений 
+```sh
+/deploy-k8s.sh
+```

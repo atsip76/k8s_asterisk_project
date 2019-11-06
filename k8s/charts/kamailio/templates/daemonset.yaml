@@ -22,7 +22,7 @@ spec:
         - name: config
       containers:
         - name: kamailio
-          image: cycoresystems/kamailio
+          image: atsip/kamailio
           env:
             - name: CLOUD
               value: gcp
@@ -30,7 +30,7 @@ spec:
             - name: config
               mountPath: /data/kamailio
         - name: rtpproxy
-          image: cycoresystems/rtpproxy
+          image: atsip/rtpproxy
           env:
             - name: CLOUD
               value: gcp

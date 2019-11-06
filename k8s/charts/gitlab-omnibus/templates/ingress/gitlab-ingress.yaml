@@ -19,7 +19,7 @@ spec:
     - prometheus.{{ .Values.baseDomain }}
     secretName: gitlab-tls
   rules:
-  - host: gitlab.{{ .Values.baseDomain }}
+  - host: {{ template "fullname" . }}
     http:
       paths:
       - path: /

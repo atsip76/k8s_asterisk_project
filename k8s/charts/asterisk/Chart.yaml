@@ -1,0 +1,7 @@
+name: asterisk
+version: 1.0.0
+description: Soft PBX
+maintainers:
+  - name: OpsProLab.ru
+    email: 3a@opsprolab.ru
+appVersion: 1.0

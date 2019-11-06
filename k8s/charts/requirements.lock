@@ -1,0 +1,15 @@
+dependencies:
+- name: rbac
+  repository: file://rbac
+  version: 1.0.0
+- name: nats
+  repository: file://nats
+  version: 1.0.0
+- name: kamailio
+  repository: file://kamailio
+  version: 1.0.0
+- name: asterisk
+  repository: file://asterisk
+  version: 1.0.0
+digest: sha256:ef0395ed1cb10a57748294dcb209e260982afc9489d78f51a862bababf052d28
+generated: 2019-11-05T19:52:11.400881011+05:00

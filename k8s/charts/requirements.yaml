@@ -1,0 +1,17 @@
+---
+dependencies:
+  - name: rbac
+    version: "1.0.0"
+    repository: "file://rbac"
+
+  - name: nats
+    version: "1.0.0"
+    repository: "file://nats"
+
+  - name: kamailio
+    version: "1.0.0"
+    repository: "file://kamailio"
+
+  - name: asterisk
+    version: "1.0.0"
+    repository: "file://asterisk"

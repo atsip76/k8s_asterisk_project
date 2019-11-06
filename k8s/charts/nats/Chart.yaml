@@ -2,6 +2,6 @@ name: nats
 version: 1.0.0
 description: voip-manager
 maintainers:
-        - name OpsProLab.ru
-        email: 3a@opsprolab.ru
+ - name: OpsProLab.ru
+   email: 3a@opsprolab.ru
 appVersion: 1.0
