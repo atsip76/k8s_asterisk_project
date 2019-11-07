@@ -6,7 +6,7 @@ provider "google" {
   version = "~> 2.11.0"
   project = var.project
   region  = var.region
-  credentials = "${file("~/.config/GCP/test-otus-833c715049ee.json")}"
+  credentials = "${file("~/.config/GCP/k8s-asterisk-bef1e09569a7.json")}"
 }
 
 data "kubernetes_service" "nginx" {

@@ -1,4 +1,4 @@
-project = "otus-test"
+project = "test-otus"
 location = "europe-west1"
 region = "europe-west1"
 cluster_name = "cluster-asterisk"

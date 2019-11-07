@@ -63,25 +63,25 @@ terraform init && terraform apply -auto-approve
 ```
 * подключаемся к созданному кластеру
 ```sh
-gcloud beta container clusters get-credentials cluster-asterisk --region europe-west1 --project test-otus
+gcloud beta container clusters get-credentials cluster-asterisk --region europe-west2 --project k8s-asterisk
 ```
 ###### Устанавливаем tiller если вариант без kubergrunt:
 ```sh
-cd infra/terraform-kubernetes/tiller
+cd ../../tiller
 kubectl apply -f tiller.yaml
 helm init --service-account tiller
 ```
-##### Устанавливаем GitLab и вместе с ним прицепом loadBalancer ingress
+##### Устанавливаем GitLab и вместе с ним loadBalancer ingress
 ```sh
-cd ../../../k8s/charts/gitlab-omnibus
+cd ../../../k8s/gitlab
 #helm repo add gitlab https://charts.gitlab.io
 #helm fetch gitlab/gitlab-omnibus --version 0.1.37 --untar
 helm install --name gitlab . -f values.yaml
 ```
 ##### Создаем A записи сервисов в DNS
-* после разворота ingress loadBalancer из предыдущего шага можем ставит DNS
+* после разворота ingress loadBalancer из предыдущего шага прописываем DNS 
 ```sh
-cd ../gcp_dns
+cd ../../infra/terraform-kubernetes/GCP/gcp_dns
 #редактируем terraform.tfvars используем свои данные по зоне и имени домена
 terraform init && terraform apply -auto-approve
 ```

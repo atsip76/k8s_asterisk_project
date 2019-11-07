@@ -5,7 +5,7 @@ provider "google" {
   version = "~> 2.11.0"
   project = var.project
   region  = var.region
-  credentials = "${file("~/.config/GCP/test-otus-833c715049ee.json")}"
+  credentials = "${file("~/.config/GCP/k8s-asterisk-bef1e09569a7.json")}"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ resource "google_container_node_pool" "node_pool" {
 # ---------------------------------------------------------------------------------------------------------------------
 # Создаем pool ноды services (git-lab, monitoring, loging)
 # ---------------------------------------------------------------------------------------------------------------------
-resource "google_container_node_pool" "node_services" {
+/* resource "google_container_node_pool" "node_services" {
   name     = "services"
   project  = var.project
   location = var.location
@@ -134,5 +134,5 @@ resource "google_container_node_pool" "node_services" {
     update = "30m"
     delete = "30m"
   }
-}
+} */
 
