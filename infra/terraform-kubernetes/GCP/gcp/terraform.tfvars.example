@@ -1,0 +1,7 @@
+project = "k8s-asterisk"
+location = "europe-west2"
+region = "europe-west2"
+cluster_name = "cluster-asterisk"
+pool_name = "kamailio"
+initial_node_count = 1
+machine_type = "n1-standard-1"
