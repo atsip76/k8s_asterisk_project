@@ -1,0 +1,7 @@
+---
+name: monitoring
+version: 0.0.1
+description: k8s asterisk monitoring
+maintainers:
+  - name: Anatoly Afanasyev
+    email: atsip76@gmail.com

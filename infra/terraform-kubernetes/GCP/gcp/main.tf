@@ -5,7 +5,7 @@ provider "google" {
   version = "~> 2.11.0"
   project = var.project
   region  = var.region
-  credentials = "${file("~/.config/GCP/k8s-asterisk-bef1e09569a7.json")}"
+  credentials = "${file("~/.config/GCP/opsprolab-asterisk-docker-ac2583b8f7b6.json")}"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ resource "google_container_cluster" "cluster" {
       disabled = false
     }
     horizontal_pod_autoscaling {
-      disabled = false
+      disabled = true
     }
     kubernetes_dashboard {
       disabled = true
@@ -41,6 +41,31 @@ resource "google_container_cluster" "cluster" {
     network_policy_config {
       disabled = true
     }
+  }
+  node_config {
+    image_type   = "COS"
+    machine_type = "n1-standard-1"
+
+
+    tags = [ "network-cluster" ]
+
+    disk_size_gb = "50"
+    disk_type    = "pd-standard"
+    #preemptible  = false
+
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring",
+    ]
+  }
+
+  timeouts {
+    create = "30m"
+    update = "30m"
+    delete = "30m"
   }
 } 
 
@@ -56,9 +81,9 @@ resource "google_container_node_pool" "node_pool" {
 
   initial_node_count = "1"
 
-  autoscaling {
+   autoscaling {
     min_node_count = "1"
-    max_node_count = "5"
+    max_node_count = "2"
   }
 
   management {
@@ -73,7 +98,7 @@ resource "google_container_node_pool" "node_pool" {
 
     tags = [ "network-cluster" ]
 
-    disk_size_gb = "30"
+    disk_size_gb = "50"
     disk_type    = "pd-standard"
     #preemptible  = false
 
@@ -111,7 +136,7 @@ resource "google_container_node_pool" "node_pool" {
 
   node_config {
     image_type   = "COS"
-    machine_type = "n1-standard-1"
+    machine_type = "n1-standard-2"
 
 
     tags = [ "network-cluster" ]
@@ -134,5 +159,6 @@ resource "google_container_node_pool" "node_pool" {
     update = "30m"
     delete = "30m"
   }
-} */
+} 
 
+ */

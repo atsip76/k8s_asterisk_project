@@ -16,6 +16,7 @@ variable "region" {
   default = "europe-west1"
 }
 
+
 variable "pool_name" {
   description = "Name node pool"
   type        = string

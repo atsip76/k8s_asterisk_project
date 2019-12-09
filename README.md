@@ -79,7 +79,7 @@ cd ../../../k8s/gitlab
 helm install --name gitlab . -f values.yaml
 ```
 ##### Создаем A записи сервисов в DNS
-* после разворота ingress loadBalancer из предыдущего шага прописываем DNS 
+* после инициализации ingress loadBalancer из предыдущего шага прописываем DNS 
 ```sh
 cd ../../infra/terraform-kubernetes/GCP/gcp_dns
 #редактируем terraform.tfvars используем свои данные по зоне и имени домена

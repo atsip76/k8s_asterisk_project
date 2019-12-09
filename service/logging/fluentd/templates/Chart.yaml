@@ -1,0 +1,7 @@
+---
+name: fluentd
+version: 0.1.0
+description: Crawler logging
+maintainers:
+  - name: Anton Nechaev
+    email: flamerior@gmail.com

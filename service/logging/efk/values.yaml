@@ -1,0 +1,11 @@
+prometheus:
+  server:
+    ingress:
+      hosts:
+        - tprom.tfm.zone
+grafana:
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+    hosts:
+      - tgraf.tfm.zone

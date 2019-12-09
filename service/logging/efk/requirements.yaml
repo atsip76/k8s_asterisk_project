@@ -1,0 +1,11 @@
+---
+dependencies:
+  - name: fluentd
+    repository: file://../fluentd
+    version: 0.1.0
+  - name: elasticsearch
+    repository: file://../elasticsearch
+    version: 0.1.0
+  - name: kibana
+    repository: file://../kibana
+    version: 0.1.0

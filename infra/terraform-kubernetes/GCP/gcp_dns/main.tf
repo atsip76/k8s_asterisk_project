@@ -27,7 +27,7 @@ resource "google_dns_record_set" "a_gitlab" {
 
 
 resource "google_dns_record_set" "a_prometheus" {
-  name = "prometheus.${google_dns_managed_zone.prod.dns_name}"
+  name = "prom.${google_dns_managed_zone.prod.dns_name}"
   managed_zone = "${google_dns_managed_zone.prod.name}"
   type = "A"
   ttl  = 300
@@ -36,7 +36,7 @@ resource "google_dns_record_set" "a_prometheus" {
 }
 
 resource "google_dns_record_set" "a_grafana" {
-  name = "grafana.${google_dns_managed_zone.prod.dns_name}"
+  name = "graf.${google_dns_managed_zone.prod.dns_name}"
   managed_zone = "${google_dns_managed_zone.prod.name}"
   type = "A"
   ttl  = 300

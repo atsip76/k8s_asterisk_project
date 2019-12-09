@@ -1,0 +1,8 @@
+---
+dependencies:
+  - name: grafana
+    repository: file://../grafana
+    version: 3.9.1
+  - name: prometheus
+    repository: file://../prometheus
+    version: 9.1.2
