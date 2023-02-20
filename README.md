@@ -1,4 +1,3 @@
-### otus-devops-project
 ## Asterisk on Kubernetes
 ## Описание проекта
 #### Этот репозиторий содержит код для развертывания масштабируемого голосового приложения и инфраструктуры в Kubernetes с использованием Kamailio, Asterisk и NATS.
